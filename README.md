@@ -101,3 +101,10 @@ Consultar ventas por período.
 Generar reporte de ventas.
 Identificar productos más vendidos.
 Consultar productos con bajo stock.
+
+
+ Atributos críticos
+
+Usabilidad: El sistema debe ser fácil y rápido de utilizar, permitiendo que el vendedor registre ventas, consulte productos y gestione el carrito de manera sencilla.
+
+Portabilidad: El sistema debe poder adaptarse a diferentes dispositivos y plataformas a medida que el negocio crezca.
