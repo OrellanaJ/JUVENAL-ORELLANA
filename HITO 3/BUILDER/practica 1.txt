@@ -1,0 +1,104 @@
+//main. java 
+
+public class Main {
+    public static void main(String[] args) {
+        Producto productoPersonalizado = new Producto.ProductoBuilder("P001", "Clean Code - Robert C. Martin")
+                .setPrecio(45.50)
+                .setCategoria("Tecnología / Libros")
+                .setStockInicial(10)
+                .build();
+
+        productoPersonalizado.mostrarInfo();
+
+        System.out.println("\n-----------------------------------\n");
+
+        Producto productoEstandar = TiendaDirector.construirProductoLibreria("P002", "Cuaderno Profesional", 3.20);
+        productoEstandar.mostrarInfo();
+    }
+}
+
+
+
+//PRODUCTO.JAVA
+
+
+
+public class Producto {
+    private String codigo;
+    private String nombre;
+    private double precio;
+    private String categoria;
+    private int stockInicial;
+    private boolean requiereDescuento;
+
+    private Producto(ProductoBuilder builder) {
+        this.codigo = builder.codigo;
+        this.nombre = builder.nombre;
+        this.precio = builder.precio;
+        this.categoria = builder.categoria;
+        this.stockInicial = builder.stockInicial;
+        this.requiereDescuento = builder.requiereDescuento;
+    }
+
+    public void mostrarInfo() {
+        System.out.println("--- DETALLES DEL PRODUCTO ---");
+        System.out.println("Código: " + codigo);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Precio: $" + precio);
+        System.out.println("Categoría: " + categoria);
+        System.out.println("Stock Inicial: " + stockInicial);
+        System.out.println("Aplica Descuento: " + requiereDescuento);
+    }
+
+    public static class ProductoBuilder {
+        private String codigo;
+        private String nombre;
+        private double precio;
+        private String categoria = "General";
+        private int stockInicial = 0;
+        private boolean requiereDescuento = false;
+
+        public ProductoBuilder(String codigo, String nombre) {
+            this.codigo = codigo;
+            this.nombre = nombre;
+        }
+
+        public ProductoBuilder setPrecio(double precio) {
+            this.precio = precio;
+            return this;
+        }
+
+        public ProductoBuilder setCategoria(String categoria) {
+            this.categoria = categoria;
+            return this;
+        }
+
+        public ProductoBuilder setStockInicial(int stockInicial) {
+            this.stockInicial = stockInicial;
+            return this;
+        }
+
+        public ProductoBuilder setRequiereDescuento(boolean requiereDescuento) {
+            this.requiereDescuento = requiereDescuento;
+            return this;
+        }
+
+        public Producto build() {
+            if (precio < 0) {
+                throw new IllegalArgumentException("El precio no puede ser negativo.");
+            }
+            return new Producto(this);
+        }
+    }
+}
+
+class TiendaDirector {
+    public static Producto construirProductoLibreria(String codigo, String nombre, double precio) {
+        return new Producto.ProductoBuilder(codigo, nombre)
+                .setPrecio(precio)
+                .setCategoria("Libros / Papelería")
+                .setStockInicial(15)
+                .setRequiereDescuento(true)
+                .build();
+    }
+}
