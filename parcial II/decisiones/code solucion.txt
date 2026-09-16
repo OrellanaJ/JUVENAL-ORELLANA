@@ -1,0 +1,143 @@
+// ============================================================
+// PARCIAL 2 — ARQUITECTURA DE SOFTWARE
+// BIBLIOTECA MUNICIPAL
+//juvenla orellana
+// Implementación: SITUACIÓN 2 — STRATEGY
+// ============================================================
+
+// Solucion: Juvenal Orellana Almendras
+
+
+// ============================================================
+// CONTRATO / ESTRATEGIA
+// ===========================================================
+
+class EstrategiaMulta {
+
+    calcularMulta(diasAtraso) {
+        throw new Error("El método calcularMulta debe ser implementado");
+    }
+}
+
+
+// ESTRATEGIA 1 — SOCIO INFANTIL
+// No paga multa, solamente se bloquean nuevos préstamos
+
+class MultaInfantil extends EstrategiaMulta {
+
+    calcularMulta(diasAtraso) {
+        return 0;
+    }
+}
+
+
+// ============================================================
+// ESTRATEGIA 2 — SOCIO ADULTO
+// 2 Bs por cada día de atraso.
+// ============================================================
+
+class MultaAdulto extends EstrategiaMulta {
+
+    calcularMulta(diasAtraso) {
+        return diasAtraso * 2;
+    }
+}
+
+
+// ============================================================
+// ESTRATEGIA 3 — SOCIO TERCERA EDAD
+// 1 Bs por día con un máximo de 20 Bs.
+// ============================================================
+
+class MultaTerceraEdad extends EstrategiaMulta {
+
+    calcularMulta(diasAtraso) {
+
+        let multa = diasAtraso * 1;
+
+        if (multa > 20) {
+            multa = 20;
+        }
+
+        return multa;
+    }
+}
+
+
+// ============================================================
+// CONTEXTO
+// Utiliza una estrategia sin conocer sus detalles internos.
+// ============================================================
+
+class CalculadorMulta {
+
+    constructor(estrategia) {
+        this.estrategia = estrategia;
+    }
+
+    calcular(diasAtraso) {
+        return this.estrategia.calcularMulta(diasAtraso);
+    }
+}
+
+
+// ============================================================
+// EJEMPLO DE USO — BIBLIOTECA MUNICIPAL
+// ============================================================
+
+console.log("==========================================");
+console.log("     BIBLIOTECA MUNICIPAL");
+console.log("     PATRÓN STRATEGY");
+console.log("==========================================");
+
+
+// ------------------------------------------------------------
+// SOCIO INFANTIL
+// ------------------------------------------------------------
+
+const calculadorInfantil =
+    new CalculadorMulta(new MultaInfantil());
+
+const multaInfantil =
+    calculadorInfantil.calcular(10);
+
+console.log("\nSOCIO INFANTIL");
+console.log("Días de atraso: 10");
+console.log("Multa: Bs " + multaInfantil);
+console.log("Estado: Bloquear nuevos préstamos");
+
+
+// ------------------------------------------------------------
+// SOCIO ADULTO
+// ------------------------------------------------------------
+
+const calculadorAdulto =
+    new CalculadorMulta(new MultaAdulto());
+
+const multaAdulto =
+    calculadorAdulto.calcular(5);
+
+console.log("\nSOCIO ADULTO");
+console.log("Días de atraso: 5");
+console.log("Multa: Bs " + multaAdulto);
+
+
+// ------------------------------------------------------------
+// SOCIO TERCERA EDAD
+// ------------------------------------------------------------
+
+const calculadorTerceraEdad =
+    new CalculadorMulta(new MultaTerceraEdad());
+
+const multaTerceraEdad =
+    calculadorTerceraEdad.calcular(30);
+
+console.log("\nSOCIO TERCERA EDAD");
+console.log("Días de atraso: 30");
+console.log("Multa: Bs " + multaTerceraEdad);
+console.log("Tope máximo: Bs 20");
+
+
+console.log("\n==========================================");
+console.log("Implementación realizada con Strategy.");
+console.log("==========================================");
