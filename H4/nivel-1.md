@@ -1,4 +1,9 @@
-flowchart LR
+
+
+
+
+
+     flowchart LR
     Vendedor["Vendedor<br/>Registra ventas"]
     Administrador["Administrador<br/>Ajusta stock y precios"]
 
