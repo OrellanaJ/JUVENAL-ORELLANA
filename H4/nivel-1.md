@@ -1,3 +1,10 @@
+El Nivel 1 debe responder:
+
+¿Quién usa el sistema? → Cliente y Administrador/Vendedor.
+¿Cuál es el sistema? → Sistema de Tienda con Inventario y Ventas.
+¿Con qué sistemas externos habla? → Sistema de Facturación Electrónica.
+
+
 
 ```mermaid
 flowchart LR
@@ -13,3 +20,5 @@ flowchart LR
     Administrador -->|"Gestiona productos,<br/>ventas e inventario"| Sistema
 
     Sistema -->|"Envía datos de facturación<br/>y recibe respuesta"| Facturacion
+
+
