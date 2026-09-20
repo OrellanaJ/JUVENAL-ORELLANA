@@ -1,4 +1,4 @@
-# ADR-001 – Decisiones de arquitectura para el Sistema Web con Inventario de Facturación Electrónica mediante SOLID, Strategy, Observer y Adapter
+# Decisiones de arquitectura para el Sistema Web con Inventario de Facturación Electrónica mediante SOLID, Strategy, Observer y Adapter
 
 ### Sistema
 
