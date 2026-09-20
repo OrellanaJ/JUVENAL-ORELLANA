@@ -1,20 +1,20 @@
 flowchart LR
 
 ```mermaid
-    Cliente[" Cliente"]
-    Admin[" Administrador / Vendedor"]
+  flowchart LR
 
-    subgraph Sistema[" SISTEMA DE TIENDA"]
-        
-        Web[" Aplicación Web<br/>Catálogo, carrito, ventas,<br/>inventario y facturación"]
+    Cliente["Cliente"]
+    Admin["Administrador / Vendedor"]
 
-        Backend[" Servicio / API del Sistema<br/>Lógica de negocio,<br/>ventas e inventario"]
+    subgraph Sistema["SISTEMA DE TIENDA"]
+        Web["Aplicación Web<br/>Catálogo, carrito, ventas,<br/>inventario y facturación"]
 
-        BD[(" Base de Datos<br/>Productos, clientes,<br/>ventas, stock y facturas")]
-        
+        Backend["Servicio / API del Sistema<br/>Lógica de negocio,<br/>ventas e inventario"]
+
+        BD[("Base de Datos<br/>Productos, clientes,<br/>ventas, stock y facturas")]
     end
 
-    Facturacion[" Sistema Externo<br/>de Facturación Electrónica"]
+    Facturacion["Sistema Externo<br/>de Facturación Electrónica"]
 
     Cliente -->|"HTTPS"| Web
     Admin -->|"HTTPS"| Web
