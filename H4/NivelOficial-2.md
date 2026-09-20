@@ -1,6 +1,6 @@
 flowchart LR
 
-mermaind
+```mermaid
     Cliente[" Cliente"]
     Admin[" Administrador / Vendedor"]
 
