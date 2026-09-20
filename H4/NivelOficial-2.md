@@ -1,4 +1,10 @@
-flowchart LR
+| Contenedor                                | Función                                                              |
+| ----------------------------------------- | -------------------------------------------------------------------- |
+|Aplicación Web                    | Interfaz que utilizan cliente y administrador                        |
+|Servicio / API                    | Procesa ventas, carrito, inventario y facturación                    |
+|Base de Datos                     | Almacena productos, stock, clientes, ventas y facturas               |
+|Sistema de Facturación Electrónica| Sistema externo con el que se comunica para emitir/procesar facturas |
+
 
 ```mermaid
   flowchart LR
