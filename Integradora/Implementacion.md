@@ -1,6 +1,5 @@
-
-
-# ADR-001: Implementación del Patrón Strategy para el cálculo de tarifas de estadía
+Implementación del Patrón Strategy para el cálculo de tarifas de estadía
+ESTUDIANTE. Juvenal Orellana Almendras
 
 ## Contexto
 El sistema de parqueo de la Torre Central calcula las estadías de vehículos (`auto`, `moto`, `residente`) aplicando tarifas por hora[cite: 1, 2]. El diseño original dependía de un bloque `switch` centralizado, provocando acoplamiento y dificultando la extensión del sistema ante nuevas reglas de negocio.
