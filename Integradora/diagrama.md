@@ -1,3 +1,6 @@
+El sistema registra ESTADÍAS: cada vehículo (auto, moto o residente)
+
+
 ```mermaid
 classDiagram
     direction TB
