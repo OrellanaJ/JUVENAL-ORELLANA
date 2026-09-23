@@ -4,16 +4,35 @@ classDiagram
     class TuNombreCompleto {
         +String autor: "Tu Nombre Completo"
     }
+    
+    class Estadia {
+        -String placa
+        -String tipoVehiculo
+        -int horas
+        -String estado
+        -decimal total
+        +cambiarEstado(nuevoEstado)
+    }
+
     class GestorDeEstadias {
         -TarifaStrategy tarifaStrategy
         -BaseDeDatosParqueo db
         -Notificador notificador
-        +registrarSalida(placa, tipo, horas)
+        +registrarEntrada(placa, tipo)
+        +registrarSalida(placa, horas)
+        +anularEstadia(placa)
     }
+
+    class AdministracionParqueo {
+        +ajustarTarifa(tipo, nuevaTarifa)
+        +generarReporteIngresosMensual()
+    }
+
     class TarifaStrategy {
         <<interface>>
         +calcular(horas)
     }
+
     class TarifaAuto {
         +calcular(horas)
     }
@@ -23,13 +42,18 @@ classDiagram
     class TarifaResidente {
         +calcular(horas)
     }
+
     class BaseDeDatosParqueo {
-        +guardarEstadia(placa, tipo, horas, total)
+        +guardarEstadia(estadia)
+        +obtenerEstadiasActivas()
+        +obtenerIngresosPorTipo()
     }
+
     class Notificador {
         <<interface>>
         +enviar(mensaje)
     }
+
     class WhatsAppDelEdificio {
         +enviar(mensaje)
     }
@@ -41,3 +65,4 @@ classDiagram
     GestorDeEstadias --> BaseDeDatosParqueo
     GestorDeEstadias --> Notificador
     Notificador <|.. WhatsAppDelEdificio
+    AdministracionParqueo --> BaseDeDatosParqueo
